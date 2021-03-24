@@ -3,8 +3,9 @@ A Windows form application which allows users to start and track tournament roun
 
 ## 1. Built With
 - C# in Visual Studio
-- Database managed by Microsoft SQL Management Studio
+- Database managed by Microsoft SQL Management Studio, and connection using Dapper (NuGet package)
 - SMTP Client to send out emails (Please set up a mail server, in ```App.config``` I have used an example GMail server. You will also need to enable "Less secure apps" for the server you set up, please see https://www.google.com/settings/security/lesssecureapps for example.)
+- Unit test written with XUnit (together with ```xunit.runner.console``` and ```xunit.runner.visualstudio``` (NuGet packages)
 
 ## 2. Getting Started
 1. Clone the repo
