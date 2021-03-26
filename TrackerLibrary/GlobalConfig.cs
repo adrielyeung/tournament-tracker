@@ -14,7 +14,7 @@ namespace TrackerLibrary
         public const string MatchupEntryFile = "MatchupEntryModels.csv";
 
         // Only 1 connector allowed to run at a time, to minimise errors associated with duplicated ids
-        public static IDataConnector Connection { get; private set; }
+        public static IDataConnector Connection { get; set; }
 
         public static void InitializeConnections(DatabaseType db)
         {

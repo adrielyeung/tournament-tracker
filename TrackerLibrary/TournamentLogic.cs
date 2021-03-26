@@ -81,13 +81,13 @@ namespace TrackerLibrary
                     foreach (PersonModel person in me.TeamCompeting.TeamMembers)
                     {
                         // Notify the opponents that they are matched up against the team (FirstOrDefault used to handle if only 1 matchup ('bye') cases)
-                        AlertPersonToNewRound(model, person, me.TeamCompeting.TeamName, matchup.Entries.Where(x => x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
+                        AlertPersonToNewRound(model, person, matchup.Entries.Where(x => x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
                     }
                 }
             }
         }
 
-        private static void AlertPersonToNewRound(TournamentModel model, PersonModel person, string teamName, MatchupEntryModel opponent)
+        private static void AlertPersonToNewRound(TournamentModel model, PersonModel person, MatchupEntryModel opponent)
         {
             // Validate email address - simply not send if not valid, no need error msg
             if (person.EmailAddress.Length == 0 || !person.EmailAddress.Contains("@") || !person.EmailAddress.Contains("."))
@@ -95,7 +95,6 @@ namespace TrackerLibrary
                 return;
             }
 
-            List<string> to = new List<string>();
             string subject;
             // Less memory intensive way to concatenate strings
             StringBuilder body = new StringBuilder();
@@ -125,10 +124,8 @@ namespace TrackerLibrary
                 body.Append("---------------------------<br>");
                 body.Append("<i>This email is system-generated from an unmonitored address. Please do not reply to this email.</i>");
             }
-
-            to.Add(person.EmailAddress);
             
-            EmailLogic.SendEmail(to, subject, body.ToString());
+            EmailLogic.SendEmail(person.EmailAddress, subject, body.ToString());
         }
 
         private static void MarkWinnerInMatchups(List<MatchupModel> models)

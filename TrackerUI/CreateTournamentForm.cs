@@ -150,13 +150,14 @@ namespace TrackerUI
             }
 
             // Create Tournament model
-            TournamentModel tm = new TournamentModel();
+            TournamentModel tm = new TournamentModel
+            {
+                TournamentName = tournamentNameTextBox.Text,
+                EntryFee = fee,
 
-            tm.TournamentName = tournamentNameTextBox.Text;
-            tm.EntryFee = fee;
-
-            tm.Prizes = selectedPrizes;
-            tm.EnteredTeams = selectedTeams;
+                Prizes = selectedPrizes,
+                EnteredTeams = selectedTeams
+            };
 
             // Use a static class to perform the logic, do not store data in the class -> static
             TournamentLogic.CreateRounds(tm);

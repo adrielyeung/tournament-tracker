@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="DataAccess\TextHelpers\TextConnectorProcessor.cs" />
     <Compile Include="EmailLogic.cs" />
+    <Compile Include="EmailSender.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="DataAccess\IDataConnector.cs" />
+    <Compile Include="IEmailSender.cs" />
     <Compile Include="Models\MatchupEntryModel.cs" />
     <Compile Include="Models\MatchupModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
